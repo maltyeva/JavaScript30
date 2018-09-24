@@ -98,7 +98,46 @@
     </div>
   </div>
 
+  <button class="closeButton">UnCheck all</button>
+
 <script>
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  console.log(checkboxes);
+
+  const closeButton = document.querySelector('.closeButton');
+
+  let lastChecked;
+
+  function handleCheck(e) {
+    // console.log(e);
+    // console.log(this);
+    let inBetween = false;
+    if (e.shiftKey && this.checked) {
+      // console.log("true");
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox ===  this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+          // console.log("Starting to Check");
+        }
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      })
+    }
+    lastChecked = this;
+
+  }
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+
+  function uncheckAll(e) {
+    // console.log("click");
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+  }
+
+  closeButton.addEventListener('click', uncheckAll);
+
+
 </script>
 </body>
 </html>
