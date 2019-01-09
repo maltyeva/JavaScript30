@@ -10,6 +10,8 @@
   </div>
 
 <script>
+
+  
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   const recognition = new SpeechRecognition();
@@ -26,7 +28,7 @@
       .map(result => result.transcript)
       .join('');
 
-      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+      const poopScript = transcript.replace(/hello/gi, '🙌');
       p.textContent = poopScript;
 
       if (e.results[0].isFinal) {
@@ -38,6 +40,8 @@
   recognition.addEventListener('end', recognition.start);
 
   recognition.start();
+
+  const synth = window.SpeechSynthesis;
 
 </script>
 

@@ -54,7 +54,29 @@
   </div>
 
 <script>
-  const nav = document.querySelector('nav#main');
+  const nav = document.querySelector('#main');
+  const logo = document.querySelector('li.logo')
+  const topofNav = nav.offsetTop;
+  console.log(topofNav);
+
+  function fixNav(e) {
+    if (window.scrollY >= topofNav) {
+      document.body.style.paddingTop = nav.offsetHeight;
+      nav.classList.add("fixed");
+      logo.classList.add("show");
+    }
+    else {
+      nav.classList.remove("fixed")
+      document.body.style.paddingTop = 0;
+      logo.classList.remove("show");
+
+
+    }
+
+  }
+
+
+  window.addEventListener('scroll', fixNav);
 </script>
 
 </body>
